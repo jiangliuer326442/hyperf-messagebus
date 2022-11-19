@@ -11,6 +11,10 @@ class ConfigProvider
     public function __invoke(): array
     {
         return [
+            'dependencies' => [
+                MessageBus\Messages\Contracts\MessageBuilderInterface::class => MessageBus\Messages\MessageBuilderImpl::class,
+                MessageBus\Producer\Interfaces\ProducerInterface::class => MessageBus\Producer\Implements\ProducerImplement::class,
+            ],
             'listeners' => [
                 Messagebus\Consumer\Listeners\RoundProcessHandle::class,
                 MessageBus\Consumer\Listeners\MetricProcessHandle::class,
