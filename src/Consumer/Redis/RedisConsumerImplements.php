@@ -44,8 +44,7 @@ class RedisConsumerImplements implements MessageBus\Consumer\Interfaces\Consumer
                 $this->consumer_name,
                 $this->model_name . '-' . $consumer . '-' . php_uname('n'),
                 [$topic => '>'],
-                $this->config->get('messagebus.' . $this->model_name . '.drivers.' . MessageBus\Constants\MessageBusType::REDIS . '.consume_num'),
-                $this->config->get('messagebus.' . $this->model_name . '.consumer_interval')
+                $this->config->get('messagebus.' . $this->model_name . '.drivers.' . MessageBus\Constants\MessageBusType::REDIS . '.consume_num')
             );
         }
         $ret = $pipe->exec();

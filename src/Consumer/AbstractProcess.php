@@ -90,7 +90,7 @@ abstract class AbstractProcess extends SwooleAbstractProcess implements ProcessI
                     $message->payload->toArray()
                 );
             } catch (\Exception $e){
-                echo "hahaha";
+
             } finally {
                 /* @phpstan-ignore-next-line */
                 $this->event && $this->event->dispatch(
@@ -152,9 +152,7 @@ abstract class AbstractProcess extends SwooleAbstractProcess implements ProcessI
                             $this->handle();
                             $consumer->commit();
                         }
-                        if ($this->defaultDriver === MessageBus\Constants\MessageBusType::KAFKA) {
-                            Coroutine::sleep($this->config->get('messagebus.' . $this->modelName . '.consumer_interval'));
-                        }
+                        sleep($this->config->get('messagebus.' . $this->modelName . '.consumer_interval'));
                     }
                 } catch (Throwable $throwable) {
                     $this->logThrowable($throwable);
@@ -162,7 +160,7 @@ abstract class AbstractProcess extends SwooleAbstractProcess implements ProcessI
                     $this->event && $this->event->dispatch(new AfterProcessHandle($this, $i));
                     Timer::clearAll();
                     CoordinatorManager::until(Constants::WORKER_EXIT)->resume();
-                    Coroutine::sleep($this->restartInterval);
+                    sleep($this->restartInterval);
                 }
             }, false, SOCK_DGRAM, true);
 
