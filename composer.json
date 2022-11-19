@@ -1,0 +1,27 @@
+{
+    "name": "mustafa3264/messagebus",
+    "description": "messagebus include kafka and redis stream for hyperf",
+    "type": "library",
+    "require": {
+        "php": ">=8.0",
+        "longlang/phpkafka": "^1.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mustafa\\Messagebus\\": "src/"
+        }
+    },
+    "extra": {
+        "hyperf": {
+            "config": "Mustafa\\Messagebus\\ConfigProvider"
+        }
+    },
+    "authors": [
+        {
+            "name": "mustafa",
+            "email": "fanghailiang2016@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
