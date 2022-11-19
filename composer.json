@@ -4,7 +4,8 @@
     "type": "library",
     "require": {
         "php": ">=8.0",
-        "longlang/phpkafka": "^1.2"
+        "longlang/phpkafka": "^1.2",
+        "hyperf/metric": "*"
     },
     "license": "MIT",
     "autoload": {
